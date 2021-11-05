@@ -1,0 +1,66 @@
+.App {
+  text-align: center;
+  font-family: 'Raleway', sans-serif;
+  letter-spacing: .05rem;
+}
+
+.App .App-header {
+  background-color: #282c34;
+  min-height: 100vh;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+      -ms-flex-direction: column;
+          flex-direction: column;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -webkit-box-pack: center;
+      -ms-flex-pack: center;
+          justify-content: center;
+  font-size: calc(10px + 2vmin);
+  color: white;
+}
+
+.App #quote-box {
+  padding: 50px;
+  max-width: 30vw;
+  background-color: #eee;
+  color: #333;
+  border-radius: 10px;
+}
+
+.App #quote-box #text {
+  font-weight: 600;
+}
+
+.App #quote-box #author {
+  font-size: 1rem;
+  text-align: end;
+}
+
+.App #quote-box .button {
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+}
+
+.App #quote-box .button #tweet-quote {
+  color: #eee;
+  padding: 10px;
+  border-radius: 10px;
+}
+
+.App #quote-box .button #new-quote {
+  padding: 15px;
+  border-radius: 8px;
+  color: #eee;
+  border: none;
+  cursor: pointer;
+}
+/*# sourceMappingURL=App.css.map */

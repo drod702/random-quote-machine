@@ -1,5 +1,7 @@
 .App {
   text-align: center;
+  font-family: 'Raleway', sans-serif;
+  letter-spacing: .05rem;
 
   .App-header {
     background-color: #282c34;
@@ -10,5 +12,39 @@
     justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
+  }
+
+  #quote-box {
+    padding: 50px;
+    max-width: 30vw;
+    background-color: #eee;
+    color: #333;
+    border-radius: 10px;
+
+    #text {
+      font-weight: 600;
+    }
+    #author {
+      font-size: 1rem;
+      text-align: end;
+    }
+    .button {
+      display: flex;
+      justify-content: space-between;
+
+      #tweet-quote {
+        color: #eee;
+        padding: 10px;
+        border-radius: 10px;
+      }
+
+      #new-quote {
+        padding: 15px;
+        border-radius: 8px;
+        color: #eee;
+        border: none;
+        cursor: pointer;
+      }
+    }
   }
 }
