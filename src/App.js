@@ -3,6 +3,7 @@ import './App.scss';
 import COLORS_ARRAY from './colorsArr';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faTwitter } from '@fortawesome/free-brands-svg-icons';
+import { faQuoteLeft} from '@fortawesome/free-solid-svg-icons'
 
 let quoteDBUrl = 'https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json'
 
@@ -56,7 +57,7 @@ function App() {
       <header className="App-header" style={{backgroundColor: colors}}>
       <div id='quote-box' style={{color: colors}}>
           <p id='text'>
-            "{quote}"
+          <FontAwesomeIcon id='quoteMark' icon={faQuoteLeft} />{quote}
           </p>
 
           <p id='author'>

@@ -36,6 +36,10 @@
   font-weight: 600;
 }
 
+.App #quote-box #text #quoteMark {
+  padding-right: 20px;
+}
+
 .App #quote-box #author {
   font-size: 1rem;
   text-align: end;
