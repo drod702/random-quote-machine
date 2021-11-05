@@ -1,57 +1,65 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import './App.scss';
+
+let quoteDBUrl = 'https://gist.githubusercontent.com/camperbot/5a022b72e96c4c9585c32bf6a75f62d9/raw/e3c6895ce42069f0ee7e991229064f167fe8ccdc/quotes.json'
 
 function App() {
   const [quote, setQuote] = useState('The most difficult thing is the decision to act.')
   const [author, setAuthor] = useState('Amelia Earhart')
   const [randomNumber, setRandomNumber] = useState(0)
+  const [quotesArr, setQuotesArr] = useState(null)
 
-  const changeQuoteAndAuthor0 = () => {
-    setQuote('The most difficult thing is the decision to act.');
-    setAuthor('Amelia Earhart')
+  const fetchQuotes = async (url) => {
+    const response = await fetch(url)
+    const parsedJSON = await response.json()
+    setQuotesArr(parsedJSON.quotes)
+    console.log(parsedJSON)
   }
 
-  const changeQuoteAndAuthor1 = () => {
-    setQuote('Dreaming, after all, is a form of planning.');
-    setAuthor('Gloria Steinem')
-  }
+  useEffect(() => {
+    fetchQuotes(quoteDBUrl)
+  }, [quoteDBUrl])
 
-  const changeQuoteAndAuthor2 = () => {
-    setQuote('People often say that motivation doesn’t last. Well, neither does bathing. That’s why we recommend it daily.');
-    setAuthor('Zig Ziglar')
-  }
-
-  const genRandomNumber = () => {
-    let randomNum = Math.floor(Math.random() * 3)
+  const getRandomQuote= () => {
+    let randomNum = Math.floor(Math.random() * quotesArr.length)
     setRandomNumber(randomNum)
-
-    if (randomNum === 0) {
-      changeQuoteAndAuthor0()
-    }
-
-    if (randomNum === 1) {
-      changeQuoteAndAuthor1()
-    }
-
-    if (randomNum === 2) {
-      changeQuoteAndAuthor2()
-    }
+    setQuote(quotesArr[randomNum].quote)
+    setAuthor(quotesArr[randomNum].author)
   }
+
+  // const ourQuotesArr = [
+  //   { 
+  //     quote: 'The most difficult thing is the decision to act.',
+  //     author: 'Amelia Earhart'
+  //   },
+  //   {
+  //     quote: 'Dreaming, after all, is a form of planning.',
+  //     author: 'Gloria Steinem'
+  //   },
+  //   {
+  //     quote: 'People often say that motivation doesn’t last. Well, neither does bathing. That’s why we recommend it daily.',
+  //     author: 'Zig Ziglar'
+  //   },
+  //   {
+  //     quote: 'Certain things catch your eye, but pursue only those that capture the heart.',
+  //     author: 'Ancient Indian Proverb'
+  //   }
+  // ]
 
   return (
     <div className="App">
       <header className="App-header">
-        <h1>Random Number: { randomNumber }</h1>
-        <button onClick = {() => genRandomNumber()}> Random Number </button>
+        {/* <h1>Random Number: { randomNumber }</h1> */}
+        <button onClick = {() => getRandomQuote()}> Random Number </button>
         <p>
           "{quote}"
         </p>
         <p>
           - {author}
         </p>
-        <button onClick = {() => changeQuoteAndAuthor0()}>Change Quote0</button>
+        {/* <button onClick = {() => changeQuoteAndAuthor0()}>Change Quote0</button>
         <button onClick = {() => changeQuoteAndAuthor1()}>Change Quote1</button>
-        <button onClick = {() => changeQuoteAndAuthor2()}>Change Quote2</button>
+        <button onClick = {() => changeQuoteAndAuthor2()}>Change Quote2</button> */}
       </header>
     </div>
   );
